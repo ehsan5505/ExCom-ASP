@@ -27,3 +27,11 @@ textarea {
 .menu a {
     margin-top:20px;
 }
+
+div.navbar a:hover{
+    color:black;
+}
+
+.mainImage{
+    margin:10px;
+}

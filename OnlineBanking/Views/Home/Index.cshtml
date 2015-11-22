@@ -6,7 +6,7 @@
     <div class="col-md-6">
         <a class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-circle-arrow-down"> </span> WithDrawal</a>
         <a class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-circle-arrow-down"> </span> Fast Cash</a>
-        <a class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-circle-arrow-down"> </span> Balance Inquiry</a>
+        <a href="@Url.Action("Details","CheckingAccount")" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-circle-arrow-down"> </span> Balance Inquiry</a>
     </div>
     <div class="col-md-6">
         <a class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-circle-arrow-down"> </span> Print Statement</a>
@@ -23,11 +23,11 @@
 <div class="col-md-6">
     <h4>Register</h4>
     <p>Register Yourself and get indulge with new facilitation</p>
-    @Html.ActionLink("Register", "Register", "Account")
+    @Html.ActionLink("Register", "Register", "Account",new { area="" },new{ @class="btn blue-grey right" })
 </div>
 
 <div class="col-md-6">
     <h4>Login</h4>
     <p>Login the banking account.</p>
-    @Html.ActionLink("Login", "Login", "Account")
+    @Html.ActionLink("Login", "Login", "Account", new { area = ""},new { @class="btn blue right" })
 </div>    

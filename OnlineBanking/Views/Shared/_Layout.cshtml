@@ -9,7 +9,8 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="row">
+    <div class="navbar navbar-inverse navbar-fixed-top indigo">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,24 +27,27 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @Html.Partial("_LoginPartial")
+                    <li>@Html.ActionLink("Home", "Index", "Home",new { } , new { @class="white-text" })</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { }, new { @class = "white-text" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { }, new { @class = "white-text" })</li>
+                    
+                        @Html.Partial("_LoginPartial")
+                        
                 </ul>
             </div>
         </div>
     </div>
+    </div>
     <div class="container body-content">
-        <div class="row">
-            <div class="col-sm-12r">
+        <div class="row mainImage">
+            <div class="col-sm-12">
                 <img class="img-responsive center-block" src="~/Content/image/Drawing.png" />
             </div>
         </div>
 
         @RenderBody()
         <hr />
-        <footer>
+        <footer class="row" style="clear:both">
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>

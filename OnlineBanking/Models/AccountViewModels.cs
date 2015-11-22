@@ -65,6 +65,17 @@ namespace OnlineBanking.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "First Name")]
+        [RegularExpression(@"\w{5,10}",ErrorMessage = "Must be 5 characters")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        [RegularExpression(@"\w{5,10}",ErrorMessage ="Must be 5 characters")]
+        public string LastName { get; set; }
+
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
