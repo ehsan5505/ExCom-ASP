@@ -93,5 +93,9 @@ namespace OnlineBanking.Controllers
                 return View();
             }
         }
+
+        //public virtual Models.ApplicationUser User { get; set; } 
+
+        //public String ApplicationUserId { get; set; }
     }
 }

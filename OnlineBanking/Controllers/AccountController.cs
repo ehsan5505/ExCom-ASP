@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OnlineBanking.Models;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 namespace OnlineBanking.Controllers
 {
@@ -151,10 +153,36 @@ namespace OnlineBanking.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
+
+                //try {
+                    var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                //}
+                //catch(DbEntityValidationException dbEx)
+                //{
+                //    foreach(var dbValidationErrors in dbEx.EntityValidationErrors)
+                //    {
+                //        foreach(var validationError in dbValidationErrors.ValidationErrors)
+                //        {
+                //            Trace.TraceInformation("Property: {0} Errors: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                //        }
+                //    }
+                //}
                 if (result.Succeeded)
                 {
+                    var db = new ApplicationDbContext();
+                    var checkingAccount = new CheckingAccount
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        AccountNumber = "RSX-231-ACC2314",
+                        Balance = 0m,
+                        ApplicationUserId = user.Id
+                       
+                    };
+                    db.checkingAccounts.Add(checkingAccount);
+                    db.SaveChanges();
+             
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

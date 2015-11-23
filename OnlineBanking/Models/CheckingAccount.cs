@@ -32,6 +32,9 @@ namespace OnlineBanking.Models
         }
         [DataType(DataType.Currency)]
         public decimal Balance { get; set; }
+        //public string ApplicationUserId { get; internal set; }
 
+        public virtual ApplicationUser User { get; set; }
+        public String ApplicationUserId { get; set; }
     }
 }
